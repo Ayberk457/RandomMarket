@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RandomMarket</title>
+
+    <style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background:
+        radial-gradient(circle at 15% 20%, rgba(20, 70, 180, .18), transparent 28%),
+        radial-gradient(circle at 85% 80%, rgba(110, 20, 200, .16), transparent 30%),
+        #030b1c;
+    color: #eef4ff;
+    min-height: 100vh;
+}
+
+header {
+    background: rgba(3, 10, 28, .96);
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(35, 125, 255, .25);
+    box-shadow: 0 4px 25px rgba(0,0,0,.35);
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: .2px;
+}
+
+.logo::first-letter {
+    filter: drop-shadow(0 0 8px #168cff);
+}
+
+nav a {
+    color: #eef4ff;
+    text-decoration: none;
+    margin-left: 28px;
+    font-weight: bold;
+    transition: .2s;
+}
+
+nav a:hover {
+    color: #25a8ff;
+}
+
+.hero {
+    width: 86%;
+    max-width: 1400px;
+    margin: 30px auto 35px;
+    padding: 45px 42px;
+    text-align: left;
+    border: 1px solid rgba(37, 133, 255, .45);
+    border-radius: 16px;
+    background:
+        linear-gradient(120deg, rgba(8,28,70,.97), rgba(7,16,42,.95)),
+        #07132e;
+    color: white;
+    box-shadow: inset 0 0 45px rgba(25, 86, 255, .08), 0 15px 45px rgba(0,0,0,.25);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: "🎮";
+    position: absolute;
+    right: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 92px;
+    filter: drop-shadow(0 0 18px #168cff);
+    opacity: .9;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #bdcce5;
+    margin-bottom: 25px;
+}
+
+.search {
+    width: 90%;
+    max-width: 600px;
+    padding: 15px 18px;
+    border: 1px solid #225ca8;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    background: #07152e;
+    color: white;
+}
+
+.search::placeholder {
+    color: #91a5c5;
+}
+
+.container {
+    width: 86%;
+    max-width: 1400px;
+    margin: 0 auto 35px;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.top h2 {
+    font-size: 28px;
+}
+
+.add-button {
+    background: linear-gradient(135deg, #078cff, #3158ff);
+    color: white;
+    border: 0;
+    padding: 12px 20px;
+    border-radius: 9px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 18px rgba(20, 125, 255, .3);
+}
+
+.add-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 25px rgba(20, 125, 255, .5);
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 22px;
+}
+
+.card {
+    background: linear-gradient(160deg, #071a3a, #06122a);
+    border: 1px solid rgba(35, 126, 255, .5);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 28px rgba(0,0,0,.3);
+    transition: .2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #168cff;
+    box-shadow: 0 12px 35px rgba(0, 110, 255, .2);
+}
+
+.image {
+    height: 160px;
+    background: radial-gradient(circle, rgba(20,90,180,.18), rgba(3,13,32,.2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 55px;
+    filter: drop-shadow(0 0 10px rgba(20, 135, 255, .35));
+}
+
+.card-content {
+    padding: 18px;
+}
+
+.card h3 {
+    margin-bottom: 8px;
+    color: #f4f8ff;
+}
+
+.card p {
+    color: #aabbd5;
+    line-height: 1.45;
+}
+
+.price {
+    color: #00e0c2;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 14px;
+}
+
+.card::after {
+    content: "Sepete Ekle";
+    display: block;
+    margin: 0 18px 18px;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #078cff, #3158ff);
+    color: white;
+    font-weight: bold;
+}
+
+footer {
+    margin-top: 50px;
+    padding: 25px;
+    text-align: center;
+    background: #020817;
+    color: #8194b3;
+    border-top: 1px solid rgba(35, 126, 255, .18);
+}
+
+@media (max-width: 700px) {
+    header {
+        padding: 16px 5%;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav a {
+        margin: 0 7px;
+    }
+
+    .hero, .container {
+        width: 92%;
+    }
+
+    .hero {
+        padding: 32px 25px;
+    }
+
+    .hero::after {
+        opacity: .18;
+    }
+
+    .top {
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+}
+</style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">🎮 Random<span style="color:#168cff">Market</span></div>
+
+        <nav>
+            <a href="#">Ana Sayfa</a>
+            <a href="#">Kategoriler</a>
+            <a href="#">Giriş Yap</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Hoş Geldin! 👋</h1>
+        <p>Aradığın ürünü bul, ilanını yayınla ve satışa başla.</p>
+
+        <input
+            class="search"
+            type="text"
+            placeholder="🔎 Ne arıyorsun?"
+        >
+    </section>
+
+    <main class="container">
+
+        <div class="top">
+            <h2>🔥 Popüler İlanlar</h2>
+            <button class="add-button">+ İlan Ver</button>
+        </div>
+
+        <div class="products">
+
+            <div class="card">
+                <div class="image">🎮</div>
+                <div class="card-content">
+                    <h3>PlayStation 5</h3>
+                    <p>Temiz kullanılmış oyun konsolu.</p>
+                    <div class="price">18.500 TL</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image">📱</div>
+                <div class="card-content">
+                    <h3>Akıllı Telefon</h3>
+                    <p>Çok temiz, kutulu telefon.</p>
+                    <div class="price">12.000 TL</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image">💻</div>
+                <div class="card-content">
+                    <h3>Gaming Laptop</h3>
+                    <p>Oyun için güçlü bilgisayar.</p>
+                    <div class="price">25.000 TL</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image">🎧</div>
+                <div class="card-content">
+                    <h3>Oyuncu Kulaklığı</h3>
+                    <p>Az kullanılmış kaliteli kulaklık.</p>
+                    <div class="price">1.500 TL</div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+        © 2026 RandomMarket — Demo İlan Pazarı
+    </footer>
+
+</body>
+</html>
